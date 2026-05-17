@@ -1,0 +1,12 @@
+name: randalloc
+title: randalloc
+username: ecebm
+account: ecebm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17374241
+bundleId: 12005089
+url: https://ecebm.shinyapps.io/randalloc/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
