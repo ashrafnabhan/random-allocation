@@ -1,5 +1,5 @@
 ---
-title: "Computer-generated Random allocation"
+title: "Computer-generated Random sequence"
 date: "`r Sys.time()`"
 output: pdf_document
 params:
