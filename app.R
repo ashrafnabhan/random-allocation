@@ -13,10 +13,10 @@ ui <- function(request){
       menuItem("Parameters", tabName = "params"),
       radioButtons("arms", "Number of treatment arms", choices = seq(2, 6, 1), inline = TRUE),
       radioButtons("blocks", "Type of randomization", 
-                   c("Simple" = "simple",
+                   c("Simple: RAR method" = "simple",
                      "Fixed Block Size" = "fixed",
                      "Random Block Size" = "random"),
-        selected="random"),
+        selected="simple"),
       selectInput("nsites", "Number of sites", choices = seq(1, 50, 1)),
       radioButtons("stratified", "Is the random allocation list stratified, except by site?",
         c("No" = "n", "Yes" = "y"),
@@ -29,7 +29,7 @@ ui <- function(request){
         )
       ),
       numericInput("npat", "Number of patients within each site or site/strata combination",
-        min = 2, value = 16
+        min = 2, value = 24
       ),
       radioButtons("setseed", "Set seed? If no, seed is set randomly",
         c("Yes" = "y", "No" = "n"),
@@ -107,8 +107,7 @@ server <- function(input, output, session) {
 
   output$seedbox <- renderValueBox({
     valueBox(seed(), "Seed",
-      icon = icon("seedling", lib = "font-awesome"),
-      color = "green"
+      color = "blue"
     )
   })
 
@@ -124,7 +123,7 @@ server <- function(input, output, session) {
       ),
       "random" = sliderInput("randomsize", "Random block sizes",
         min = arms,
-        max = arms * 6,
+        max = arms * 4,
         value = c(arms * 2, arms * 4),
         step = arms
       )
