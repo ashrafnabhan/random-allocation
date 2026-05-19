@@ -7,7 +7,7 @@ library(openxlsx)
 
 ui <- function(request){
   dashboardPage(
-  dashboardHeader(title = "Computer-generated Random sequence"),
+  dashboardHeader(title = "Random Allocation"),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Parameters", tabName = "params"),
@@ -80,8 +80,7 @@ server <- function(input, output, session) {
   output$arms <- renderUI({
     v <- list()
     armnames <- c(
-      "Control", "Intervention", "Intervention 2",
-      "Intervention 3", "Intervention 4", "Intervention 5"
+      "Arm 1", "Arm 2", "Arm 3", "Arm 4", "Arm 5", "Arm 6"
     )
     v[[1]] <- textInput("allocvar", "Name of allocation variable",
       value = "ARM"
@@ -106,7 +105,7 @@ server <- function(input, output, session) {
   })
 
   output$seedbox <- renderValueBox({
-    valueBox(seed(), "Seed",
+    valueBox(seed(), "AN Allocation Sequence",
       color = "blue"
     )
   })
